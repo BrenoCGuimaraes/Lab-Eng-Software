@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 4</title>
+</head>
+<body>
+    <script>
+        let x = prompt("Digite uma letra um um número","")
+        let y = confirm("Você quer saber o tipo do dado informado?","")
+        if(x != null && x.trim() != ""){
+            if(y == true){
+                if(isNaN(x)){
+                    document.write("O dado é uma string!")
+                }
+                else{
+                    document.write("O dado é um número!")
+                }
+            }
+            else{
+                document.write("Obrigado por visitar a pagina!")
+            }
+        }
+        else{
+            document.write("Número/Letra não informada!")
+        }
+    </script>
+    <a href="./index.html"><li>Voltar</li></a>
+</body>
+</html>

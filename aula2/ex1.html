@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Exercício 1</h1>
+    <ol id="lista"></ol>
+    <input type="text" id="myInput">
+    <button onclick="teste1()">ver</button>
+    <script>
+        var escrita ={
+
+        }
+        function teste(){
+         let x = document.getElementById("myInput").value;
+         console.log(x);
+        } 
+        function teste1(){
+            var e = document.createElement("P");
+            var t = document.createTextNode("this is a paragraphy.");
+            e.appendChild(t);
+            document.body.appendChild(e);
+        }
+    </script>
+
+</body>
+</html>
