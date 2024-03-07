@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,24 +9,35 @@
 
 <body>
     <h1>Exercício 1</h1>
-    <ol id="lista"></ol>
+    
     <input type="text" id="myInput">
-    <button onclick="teste1()">ver</button>
+    <button onclick="cadastro(); ordenar()">ver</button>
+    <ol id="lista"></ol>
+    
     <script>
-        var escrita ={
 
+        let lista = document.getElementById("lista")
+        
+        var escrita = []
+
+        function cadastro() {
+            let textInput = document.getElementById("myInput").value.toLowerCase();
+            escrita.push(textInput);
+            // console.log(escrita);
         }
-        function teste(){
-         let x = document.getElementById("myInput").value;
-         console.log(x);
-        } 
-        function teste1(){
-            var e = document.createElement("P");
-            var t = document.createTextNode("this is a paragraphy.");
-            e.appendChild(t);
-            document.body.appendChild(e);
+
+        function ordenar() {
+            escrita.sort();
+            lista.innerHTML = "";
+            for (let i = 0; i < escrita.length; i++) {
+                var li = document.createElement("li");
+                var texto = escrita[i];
+                li.textContent = texto; //conteudo do texto, escrita de tal posição
+                lista.appendChild(li);
+            }
         }
     </script>
-
+    <a href="../index.html"><li>Voltar</li></a>
 </body>
+
 </html>
