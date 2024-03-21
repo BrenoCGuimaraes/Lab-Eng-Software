@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Exercício 2</h1>
+    <h1 id="h1"></h1>
+    <!-- getHour() -->
+    <script>
+        let h1 = document.getElementById("h1")
+        function hora(){
+            const horario = new Date()
+            let H = horario.getHours()
+            let M = horario.getMinutes()
+            let S = horario.getSeconds()
+            let complementoH = ""
+            let complementoM = ""
+            let complementoS = ""
+            if(horario.getHours() < 10){
+                complementoH = "0"
+            }
+            if(horario.getMinutes() < 10){
+                complementoM = "0"
+            }
+            if(horario.getSeconds() < 10){
+                complementoS = "0"
+            }
+            
+            h1.innerHTML = complementoH + H + ":" + complementoM + M + ":" + complementoS + S 
+            // setTimeout(hora, 1000); // executa a função a cada segundo "USADO EM EVENTO (AO CLICAR EM BOTÃO)"            
+        }
+        setInterval(hora, 1000); // acaontece sem precisar ter que apertar um botao EX
+        <a href="./index.html"><li>Voltar</li></a>
+    </script>
+</body>
+</html>

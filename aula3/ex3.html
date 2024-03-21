@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label for="texto">Insira uma palavra ou frase: </label>
+    <input type="text" id="myInput"> <br>
+    <button id="botao">Verificar</button>
+    <script>
+        
+        let botao = document.getElementById("botao")
+        botao.addEventListener("click", ()=>{
+            let myInput = document.getElementById("myInput").value.toLowerCase()
+            let Reverse = ""
+            
+            if(myInput != null && myInput != ""){
+                if(myInput.length <= 1){
+                    return alert("É só uma letra!")
+                }
+                for (let i = myInput.length - 1; i >= 0; i--) {
+                    const ReverseLetra = myInput[i];
+                    Reverse += ReverseLetra
+                }
+            }
+            if (myInput == Reverse) {
+                alert('É um palíndromo')
+            }
+            else {
+                alert ("Não é palíndromo")
+            }
+        })
+    </script>
+    <a href="./index.html"><li>Voltar</li></a>
+</body>
+</html>
