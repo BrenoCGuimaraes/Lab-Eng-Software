@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de Cadastro</title>
+</head>
+<style>
+    body{
+        background-image: url(bolas.gif);
+    }
+    h1 {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    input {
+        border: none;
+        outline: 0;
+        border-bottom: 1px solid black;
+        margin-bottom: 20px;
+    }
+
+    #erro {
+        display: none;
+        color: red;
+    }
+
+    #erro-radio {
+        display: none;
+        color: red;
+        margin-left: 10px;
+    }
+
+    form {
+        background-color: #fff;
+        display: flex;
+        flex-direction: column;
+        width: 350px;
+        margin: 0 auto;
+        margin-top: 10px;
+        box-shadow: 1px 1px 8px 5px rgb(0, 183, 255);
+        padding: 10px;
+        gap: 2px;
+    }
+
+    #Pro_ALU {
+        display: flex;
+        justify-content: start;
+        width: 100%;
+    }
+
+    button {
+        background: linear-gradient(144deg, #af40ff, #5b42f3 50%, #00ddeb);
+        color: #fff;
+        padding: 10px !important;
+        border-radius: 10px;
+        margin-top: 10px;
+    }
+
+    button:hover {
+        background: linear-gradient(144deg, #1e1e1e, 20%, #1e1e1e 50%, #1e1e1e);
+        color: rgb(255, 255, 255);
+        padding: 10px !important;
+        cursor: pointer;
+        transition: all 0.4s ease;
+    }
+
+    #inserir {
+        display: flex;
+        flex-direction: column;
+        gap: 1px;
+    }
+</style>
+
+<body>
+    <form>
+        <h1>Formulário de Cadastro</h1>
+        <label for="nome">Nome:</label>
+        <input type="text" name="nome" id="nome" placeholder="Digite seu nome completo">
+
+        <label for="email">Email:</label>
+        <input type="text" name="email" id="email" placeholder="fulano@gmail">
+
+
+        <label for="data_nascimento">Data Nascimento:</label>
+        <input type="date" id="data_nascimento" name="data_nascimento">
+
+        <label for="fone_fixo">Telefone Fixo:</label>
+        <input type="text" name="fone_fixo" id="fone_fixo" placeholder="(99)9999-999">
+
+        <label for="fone_celular">Telefone Celular:</label>
+        <input type="text" name="fone_celular" id="fone_celular" placeholder="(99)9999-999">
+
+        <div id="Pro_ALU">
+            <input id="prof" type="radio" name="radio" value="professor" onchange="professor()">Professor
+            <input id="alu" type="radio" name="radio" value="aluno" onchange="aluno()">Aluno
+            <span id="erro-radio">Selecione algum !</span>
+        </div>
+
+        <div id="inserir"></div>
+
+        <button type="button" onclick="CriarForm()">Enviar</button>
+        <button type="reset">Redefinir</button>
+        <span id="erro">Falta preencher os campos!</span>
+    </form>
+    <div id="resultado"></div>
+    <script>
+        class Pessoa {
+            constructor(nome, email, data_nascimento, fone_fixo, fone_celular) {
+                this.nome = nome;
+                this.email = email;
+                this.data_nascimento = data_nascimento;
+                this.fone_fixo = fone_fixo;
+                this.fone_celular = fone_celular;
+            }
+        }
+        class Professor extends Pessoa {
+            constructor(nome, email, data_nascimento, fone_fixo, fone_celular, area, matricula, lattes) {
+                super(nome, email, data_nascimento, fone_fixo, fone_celular);
+                this.area = area;
+                this.matricula = matricula;
+                this.lattes = lattes;
+            }
+        }
+        class Aluno extends Pessoa {
+            constructor(nome, email, data_nascimento, fone_fixo, fone_celular, curso, matriculaAluno) {
+                super(nome, email, data_nascimento, fone_fixo, fone_celular);
+                this.curso = curso;
+                this.matriculaAluno = matriculaAluno;
+            }
+        }
+
+        function professor() {
+            let inserir = document.getElementById("inserir");
+            inserir.innerHTML = "";
+
+            let area = `<label for="area">Área:</label><input type="text" id="area" name="area" placeholder="Digite sua área de atuação">`;
+            let matricula = `<label for="matricula">Matrícula:</label><input id="matricula" type="text" name="matricula" placeholder="Digite sua matricula">`
+            let lattes = `<label for="lattes">Lattes:</label><input type="text" id="lattes" name="lattes" placeholder="Digite aqui seu endereço para o lattes">`
+
+            inserir.innerHTML += area;
+            inserir.innerHTML += matricula;
+            inserir.innerHTML += lattes;
+        }
+
+        function aluno() {
+            let inserir = document.getElementById("inserir");
+            inserir.innerHTML = "";
+            let curso = `<label for="curso">Curso:</label><input type="text" name="curso" id="curso" placeholder="Digite seu curso">`
+            let matriculaAluno = `<label for="matricula">Matrícula:</label><input type="text" id="matriculaAluno" name="matricula" placeholder="Digite sua matricula">`
+
+            inserir.innerHTML += curso;
+            inserir.innerHTML += matriculaAluno;
+        }
+
+        let erro = document.getElementById("erro")
+        let erroRadio = document.getElementById("erro-radio")
+        let prof = document.getElementById("prof")
+        let alu = document.getElementById("alu")
+
+        function CriarForm() {
+            if (prof.checked || alu.checked) {
+                erroRadio.style.display = 'none'
+                let nome = document.getElementById("nome").value.trim();
+                let email = document.getElementById("email").value.trim();
+                let data_nascimento = parseInt(document.getElementById("data_nascimento").value.trim());
+                let fone_fixo = parseInt(document.getElementById("fone_fixo").value.trim());
+                let fone_celular = parseInt(document.getElementById("fone_celular").value.trim());
+
+                if (prof.checked) {
+                    let area = document.getElementById("area").value.trim();
+                    let matricula = document.getElementById("matricula").value.trim();
+                    let lattes = document.getElementById("lattes").value.trim();
+                    if (!nome || !email || !data_nascimento || !fone_fixo || !fone_celular || !area|| !matricula || !lattes) {
+                        erro.style.display = 'inline'
+                    } else {
+                        let professor = new Professor(nome, email, data_nascimento, fone_fixo, fone_celular, area, matricula, lattes)
+                        console.log(professor)
+                    }    
+                }
+                else if (alu.checked) {
+                    let curso = document.getElementById("curso").value.trim();
+                    let matriculaAluno = document.getElementById("matriculaAluno").value.trim();
+                    if (!nome || !email || !data_nascimento || !fone_fixo || !fone_celular || !curso || !matriculaAluno) {
+                        erro.style.display = 'inline'
+                    } else {
+                        let aluno = new Aluno(nome, email, data_nascimento, fone_fixo, fone_celular, curso, matriculaAluno)
+                        console.log(aluno)
+                    }
+                }
+            }
+            else{
+                erroRadio.style.display = 'inline';
+            }
+
+            // if (!nome || !email || !data_nascimento || !fone_fixo || !fone_celular) {
+            //     erro.style.display = 'inline'
+            // } else {
+            //     let aluno = new Aluno(nome, email, data_nascimento, fone_fixo, fone_celular, curso, matricula)
+            //     console.log(aluno);
+            //     // const resultado = document.getElementById("resultado");
+            //     // resultado.innerHTML = "Nome: " + nome + "<br>" + "Email" + email + "<br>" + "Data Nascimento:" + data_nascimento +"<br>" + "Telefone Fixo: " + fone_fixo + "<br>" + "Telefone celular: " + fone_celular + "<br>";
+            // }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="container"></div>
+
+    
+    <script>
+        let div = document.getElementById("container")
+        div.style.cssText = "display: flex; position: relative; margin: 0 auto; border: 2px solid black; flex-direction:column;  align-items: center;"
+        //TOTAL
+            let Total = document.createElement("h1")
+            Total.textContent = "Total" 
+            div.appendChild(Total)
+
+            let somaTotal = document.createElement("span")
+            somaTotal.textContent = "0"
+            somaTotal.style.cssText = "border: 2px solid; padding: 7px 45px 7px 45px; border-radius: 5px;"
+            div.appendChild(somaTotal)
+
+        //reload
+        let carregar = document.createElement("img")
+        carregar.src = "reload.png"
+        carregar.style.cssText = " display:flex; position: absolute; width:50px; right: 10px; top: 10px; "
+        div.appendChild(carregar)
+
+            // RESETAR TUDO 
+            carregar.addEventListener("click", ()=>{
+                    contT = 0;
+                    contM = 0;
+                    contH = 0
+               
+                    ContTotal.textContent = contH;
+                    TotalCont.textContent = contM;
+                    somaTotal.textContent = contT;
+                })
+
+        //div que segura o casal
+        let casal = document.createElement("div")
+        casal.style.cssText = "display: flex;"
+        div.appendChild(casal)
+
+        //div do homem
+        let DivHomem = document.createElement("div")
+        DivHomem.style.cssText = "display: flex; flex-direction:column;  align-items: center;"
+        casal.appendChild(DivHomem)
+        
+
+            let homem = document.createElement("img")
+            homem.src = "icon-homem.png"
+            homem.style.cssText = "width: 200px"
+            DivHomem.appendChild(homem)
+
+            //CALCULO
+            let calculo = document.createElement("div")
+            DivHomem.appendChild(calculo)
+            calculo.style.cssText = "display: flex; flex-direction: row; gap: 20px; align-items: center;"
+
+                //BOTAO DE SOMAR
+                let somar = document.createElement("img")
+                somar.src = "mais.png"
+                somar.style.cssText = "width: 50px"
+                calculo.appendChild(somar)
+
+                //BOTAO DE SUBTRAIR
+                let menos = document.createElement("img")
+                menos.src = "menos.png"
+                menos.style.cssText = "width: 50px"
+                calculo.appendChild(menos)
+
+                
+                let contH = 0
+                let contT = 0
+                somar.addEventListener("click", ()=>{
+                    contH++;
+                    contT++;
+                    ContTotal.textContent = contH;
+                    somaTotal.textContent = contT;
+                })
+            
+                menos.addEventListener("click", ()=>{
+                    if(contT > 0 && contH > 0){
+                    contH--;
+                    contT--;
+                    ContTotal.textContent = contH;
+                    somaTotal.textContent = contT;
+                }
+                })
+                
+            
+            //HOMEM 
+            let men = document.createElement("h1")
+            men.textContent = "HOMEM" 
+            DivHomem.appendChild(men)
+
+            let ContTotal = document.createElement("span")
+            ContTotal.textContent = "0"
+            ContTotal.style.cssText = "border: 2px solid; padding: 7px 45px 7px 45px; border-radius: 5px;"
+            DivHomem.appendChild(ContTotal)
+
+        //DIV DA MULHER
+        let DivMulher = document.createElement("div")
+        DivMulher.style.cssText = "display: flex; flex-direction:column;  align-items: center;"
+        casal.appendChild(DivMulher)
+
+            let mulher = document.createElement("img")
+            mulher.src = "icon-mulher.png"
+            mulher.style.cssText = "width: 200px"
+            DivMulher.appendChild(mulher)
+
+            //CALCULO
+            let calcular = document.createElement("div")
+            calcular.style.cssText = "display: flex; flex-direction: row; gap: 20px; align-items: center;"
+            DivMulher.appendChild(calcular)
+
+                //BOTAO DE SOMAR
+                let soma = document.createElement("img")
+                soma.src = "mais.png"
+                soma.style.cssText = "width: 50px"
+                calcular.appendChild(soma)
+
+                //BOTAO DE SUBTRAIR
+                let sub = document.createElement("img")
+                sub.src = "menos.png"
+                sub.style.cssText = "width: 50px"
+                calcular.appendChild(sub)
+                
+                let contM = 0
+                soma.addEventListener("click", ()=>{
+                    contM++;
+                    contT++;
+                    TotalCont.textContent = contM;
+                    somaTotal.textContent = contT;
+                })
+
+                sub.addEventListener("click", ()=>{
+                    if(contT > 0 && contM > 0){
+                        contM--;
+                        contT--;
+                        
+                        TotalCont.textContent = contM;
+                        somaTotal.textContent = contT;
+                    }
+                })
+
+
+            //MULHER 
+            let girl = document.createElement("h1")
+            girl.textContent = "MULHER" 
+            DivMulher.appendChild(girl)
+
+            let TotalCont = document.createElement("span")
+            TotalCont.textContent = "0"
+            TotalCont.style.cssText = "border: 2px solid; padding: 7px 45px 7px 45px; border-radius: 5px;"
+            DivMulher.appendChild(TotalCont)
+
+        let voltar = document.createElement("a")
+        voltar.href = "../index.html"
+        div.appendChild(voltar)   
+
+        //BOTAO DE VOLTAR
+        let exit = document.createElement("img")
+        exit.src = "voltar.png"
+        exit.style.cssText = "position: absolute; width: 50px; top: 10px; left: 5px;"
+        voltar.appendChild(exit)
+
+    </script>
+    
+</body>
+</html>
