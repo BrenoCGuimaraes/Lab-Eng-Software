@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>calculadora</title>
+    <style>
+        
+        #container{
+            margin: 0 auto; 
+            border: 2px solid black; 
+            flex-direction: column;
+            width: 20em;
+            /* height: 27em; */
+            background-color: black;
+            border-radius: 20px; 
+        }
+        #resultado{
+            display: flex;
+            color: aliceblue;
+            /* background-color: aqua; */
+            font-size: 60PX;
+            justify-content: flex-end;
+
+        }
+
+        #calculos{
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            margin-bottom: 2px;
+            gap: 2px;
+        }
+        .botoes{
+            outline: 0;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%; 
+            font-size: 20PX;
+            background-color: rgb(162, 158, 158);
+            
+        }
+
+        .equa{
+            font-size: 30px;
+            outline: 0;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%; 
+            color: aliceblue;
+            background-color: rgb(255, 123, 0);
+        }
+
+        .num{
+            outline: 0;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%; 
+            font-size: 20PX;
+            color: aliceblue;
+            background-color: rgb(63, 62, 62);
+            
+        }
+
+        #final{
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 2px;
+            outline: 0;
+            font-size: 20PX;
+            color: aliceblue;
+            margin-bottom: 15px;
+        }
+
+        #redondo{
+            outline: 0;
+            width: 147px;
+            height: 70px;
+            border-radius: 80px; 
+            font-size: 20PX;
+            color: aliceblue;
+            background-color: rgb(63, 62, 62);
+            gap: 2px;
+        }
+
+        
+    </style>
+</head>
+
+<body>
+    
+    <div id="container"></div>
+
+    <script>
+        let div = document.getElementById("container")
+        
+        let resultado = document.createElement("div")
+        resultado.setAttribute("id", "resultado")
+        div.appendChild(resultado)
+
+            let total = document.createElement("span")
+            total.classList.add("total")
+            total.textContent = "0";
+            resultado.appendChild(total)
+
+        let calculos = document.createElement("div")
+        calculos.setAttribute("id", "calculos")
+        div.appendChild(calculos)
+        
+
+            let AC = document.createElement("button")
+            AC.classList.add("botoes")
+            AC.textContent = "AC"
+            calculos.appendChild(AC)
+            AC.addEventListener("click", ()=>{
+
+                total.textContent = "0";
+                })
+
+            let troca_mais_menos = document.createElement("button")
+            troca_mais_menos.textContent = "+/-"
+            troca_mais_menos.classList.add("botoes")
+            calculos.appendChild(troca_mais_menos)
+            troca_mais_menos.addEventListener("click", ()=>{
+                total.textContent = parseFloat(total.textContent) * -1;
+            })
+
+            let porcentagem =  document.createElement("button")
+            porcentagem.textContent = "% "
+            porcentagem.classList.add("botoes")
+            calculos.appendChild(porcentagem)
+            porcentagem.addEventListener("click", ()=>{
+                total.textContent = parseFloat(total.textContent) / 100;
+            })
+
+            
+            let dividir = document.createElement("button")
+            dividir.textContent = "÷"
+            dividir.classList.add("equa")
+            calculos.appendChild(dividir)
+            dividir.addEventListener("click", ()=>{
+                total.textContent += " / ";
+            })
+
+           
+            let sete = document.createElement("button")
+            sete.textContent = "7"
+            sete.classList.add("num")
+            calculos.appendChild(sete)
+            sete.addEventListener("click", ()=>{
+                if (total.textContent === "0") {
+                    total.textContent = "7";
+                } else {
+                    total.textContent += "7";
+                }
+            });
+
+            let oito = document.createElement("button")
+            oito.textContent = "8"
+            oito.classList.add("num")
+            calculos.appendChild(oito)
+            oito.addEventListener("click", ()=>{
+                if (total.textContent === "0") {
+                    total.textContent = "8";
+                } else {
+                    total.textContent += "8";
+                }
+            })
+
+            let nove = document.createElement("button")
+            nove.textContent = "9"
+            nove.classList.add("num")
+            calculos.appendChild(nove)
+            nove.addEventListener("click", ()=>{
+                if (total.textContent === "0") {
+                    total.textContent = "9";
+                } else {
+                    total.textContent += "9";
+                }
+            })
+            
+            let mult = document.createElement("button")
+            mult.textContent = "×"
+            mult.classList.add("equa")
+            calculos.appendChild(mult)
+            mult.addEventListener("click", ()=>{
+                total.textContent += " * ";
+            })
+
+            let quatro = document.createElement("button")
+            quatro.textContent = "4"
+            quatro.classList.add("num")
+            calculos.appendChild(quatro)
+            quatro.addEventListener("click", ()=>{
+                if (total.textContent === "0") {
+                    total.textContent = "4";
+                } else {
+                    total.textContent += "4";
+                }
+            })
+
+            let cinco = document.createElement("button")
+            cinco.textContent = "5"
+            cinco.classList.add("num")
+            calculos.appendChild(cinco)
+            cinco.addEventListener("click", ()=>{
+                if (total.textContent === "0") {
+                    total.textContent = "5";
+                } else {
+                    total.textContent += "5";
+                }
+            })
+
+            let seis = document.createElement("button")
+            seis.textContent = "6"
+            seis.classList.add("num")
+            calculos.appendChild(seis)
+            seis.addEventListener("click", ()=>{
+                if (total.textContent === "0") {
+                    total.textContent = "6";
+                } else {
+                    total.textContent += "6";
+                }
+            })
+
+            let menos = document.createElement("button")
+            menos.textContent = "-"
+            menos.classList.add("equa")
+            calculos.appendChild(menos)
+            menos.addEventListener("click", ()=>{
+                total.textContent += " - ";
+            })
+
+            let um = document.createElement("button")
+            um.textContent = "1"
+            um.classList.add("num")
+            calculos.appendChild(um)
+            um.addEventListener("click", ()=>{
+                if (total.textContent === "0") {
+                    total.textContent = "1";
+                } else {
+                    total.textContent += "1";
+                }
+            })
+
+            let dois = document.createElement("button")
+            dois.textContent = "2"
+            dois.classList.add("num")
+            calculos.appendChild(dois)
+            dois.addEventListener("click", ()=>{
+                if (total.textContent === "0") {
+                    total.textContent = "2";
+                } else {
+                    total.textContent += "2";
+                }
+            })
+
+            let tres = document.createElement("button")
+            tres.textContent = "3"
+            tres.classList.add("num")
+            calculos.appendChild(tres)
+            tres.addEventListener("click", ()=>{
+                if (total.textContent === "0") {
+                    total.textContent = "3";
+                } else {
+                    total.textContent += "3";
+                }
+            })
+
+            let mais = document.createElement("button")
+            mais.textContent = "+"
+            mais.classList.add("equa")
+            calculos.appendChild(mais)
+            mais.addEventListener("click", ()=>{
+                total.textContent += " + ";
+            })
+            
+        let final = document.createElement("div")
+        final.setAttribute("id", "final")
+        div.appendChild(final)
+            
+            let zero = document.createElement("button")
+            zero.textContent = "0"
+            zero.setAttribute("id", "redondo")
+            final.appendChild(zero)
+            zero.addEventListener("click", ()=>{
+                if (total.textContent !== "0") {
+                    total.textContent += "0";
+                }
+            })
+
+            let virgula = document.createElement("button")
+            virgula.textContent = ","
+            virgula.classList.add("num")
+            final.appendChild(virgula)
+            virgula.addEventListener("click", ()=>{
+                if (!total.textContent.includes(".")) {
+                    total.textContent += ".";
+                }
+            })
+
+            let igual = document.createElement("button")
+            igual.textContent = "="
+            igual.classList.add("equa")
+            final.appendChild(igual)
+            igual.addEventListener("click", ()=>{
+                try {
+                    total.textContent = eval(total.textContent);
+                } catch (error) {
+                    total.textContent = "Erro";
+                }
+            });
+    </script>
+</body>
+</html>
